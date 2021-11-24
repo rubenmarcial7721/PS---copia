@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO RECONOCIMIENTO DE PATRONES SINTACTICO-ESTRUCTURAL</title>
+</head>
+
+
+
+<body style="background-color: rgb(248, 187, 240);">
+
+
+
+  
+    <TABLE width= 95% style="border: 5px solid rgb(243, 0, 211); background-color: rgb(255, 255, 255); "  align="center">
+        <TR>
+            <TD><center><img src="https://fotografias.lasexta.com/clipping/cmsimages02/2013/10/19/13F75B21-1C41-483F-9F1F-E5A7C066F706/58.jpg" width="200" height="100"></center></TD> 
+            <TD style="border: 5px solid rgb(255, 98, 221); background-color: rgb(255, 156, 242);" align="center"><a href="{% url  'grafo:grafo' %}" ><font size="5" color="White">Home</font></a></TD> 
+            <TD style="border: 5px solid rgb(255, 98, 221); background-color: rgb(255, 156, 242);"align="center"><a href="{% url 'home:home'%}"><font size="5" color="White">Grafo</font></a></TD> 
+            <TD style="border: 5px solid rgb(255, 98, 221); background-color: rgb(255, 156, 242);" align="center"><a href="{% url 'about:about' %}"><font size="5" color="White">About</font> </a></TD>
+            <TD style="border: 5px solid rgb(255, 98, 221); background-color: rgb(255, 156, 242);" align="center"><a href="{% url 'sintactico' %}"><font size="5" color="White">Sintactico</font></a></TD>
+            <TD><center><img src="https://fotografias.lasexta.com/clipping/cmsimages02/2013/10/19/13F75B21-1C41-483F-9F1F-E5A7C066F706/58.jpg" width="200" height="100" ></center></TD> 
+        </TR>
+    </TABLE>
+
+    
+
+    <h1><center><font size="15" color="White">CURSO DE RECONOCIMIENTO DE PATRONES SINTACTICO ESTRUCTURAL</font></center></h1>
+    <h2><center><font size="10" color="White">OCTUBRE MES DEL CANCER DE MAMA</font></center></h2>
+    
+
+    
+
+
+
+    
+{% block contenido %}
+
+<table width= 95% style="border: 5px solid rgb(243, 0, 211); background-color: rgb(255, 156, 242);" align="center">
+
+  <tr>
+    <th><center><font size="4" color="White">BASE DE DATOS</font></center></th>
+    <!-- <th><center><font size="4" color="White">NORMA</font></center></th> -->
+    <th><center><font size="4" color="White">DISTANCIA EUCLIDEA</font></center></th>
+    <th><center><font size="4" color="White">RESULTADO DE LOS UMBRALES</font></center></th>
+  </tr>
+
+  <tr>
+    <td id="nested">
+      <table style="width:auto;"  id="BASE DE DATOS" align="center">
+        <tr>
+          <td>
+              {% for elemento in lista %}
+              <tr>
+                  <th style="border: 5px solid rgb(248, 35, 135);">{{elemento.pk}}</th>
+                  {% if elemento.temperatura > 50  %}
+                  <th style="border: 5px solid rgb(255, 136, 136);">{{elemento.temperatura}}</th>
+                  {% else %}
+                  <th style="border: 5px solid rgb(169, 255, 173);">{{elemento.temperatura}}</th>
+                  {% endif %}
+                  <th style="border: 5px solid rgb(248, 35, 135);">{{elemento.color}}</th>
+                  <th style="border: 5px solid rgb(248, 35, 135);">{{elemento.inflamation}}</th>
+              </tr>
+              {% endfor %}
+          </td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- <td id="nested">
+      <table style="width:auto;" id="tabla2" align="center">
+        <tr>
+          <td>
+              {% for elemento in listaproc %}
+              <tr>
+                  <th style="width:auto;border: 1px solid rgb(255, 255, 255);">{{elemento}}</th>
+              </tr>
+              {% endfor %}
+          </td>
+        </tr>
+      </table>
+    </td> -->
+
+    <td align="center" valign="top">
+      <table style="width:auto;" id="MATRIZ" align="center" valign="top">
+        <th  align="center" ><label for="umbral">UMBRAL: </label></th>
+        <th><textarea name="umbral" rows="1" cols="10"></textarea></th>
+        <th><button name="umbral" rows="1" cols="10">Umbral</button></th>
+           </table>
+      <div id="Layer1" style="width:700px; height:-400px; overflow: scroll;" >
+        
+        <table style="width:auto; border: 5px solid rgb(251, 245, 155);" id="MATRIZ" align="center" valign="top">
+                {% for i in euclidea%}
+                <th>{{forloop.counter}}</th>
+                {% endfor %}
+    
+                {% for i in euclidea %}
+                <tr style="border: 5px solid rgb(128, 223, 240);">
+                    <th>{{forloop.counter}}</th>
+    
+                    {% for j in i %}
+                    {% if j == 0  %}
+                    <td style="border: 5px solid rgb(31, 210, 255);"> {{j}}</td>
+                    {% else %}
+                    <td style="border: 5px solid rgb(85, 253, 169);"> {{j}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+      </div>
+
+    </td>
+
+    <td id="nested" valign="top">
+      <table style="width:auto;"  id="RESULTADOS" align="center">
+        <tr>
+          <td>
+              <tr>
+                  <th style="border: 5px solid rgb(69, 247, 253);">R1</th>
+                  <th style="border: 5px solid rgb(248, 35, 135);">R2</th>
+                  <th style="border: 5px solid rgb(69, 247, 253);">DISTANCIA</th>
+                  <th style="border: 5px solid rgb(248, 35, 135);">TRUE/FALSE</th>
+              </tr>
+          </td>
+        </tr>
+      </table>
+    </td>
+
+  </tr>
+</table>
+ 
+{% endblock contenido %}
+</body>
+</html>
