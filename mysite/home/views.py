@@ -1,7 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Tessiu
-import numpy
 from scipy.spatial import distance
 
 # Create your views here.
