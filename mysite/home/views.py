@@ -1,8 +1,9 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Tessiu
+import pandas as pd
 from scipy.spatial import distance
-
+tessiu = Tessiu.objects.all()
 
 # Create your views here.
 def home(request):
@@ -48,5 +49,11 @@ def euclidea(tejidos):
         mEuclidea.append(f)
 
     return mEuclidea
+
+def procesa(request):
+    if(request.method == 'POST'):
+        umbral = int(request.POST['umbral'])
+        
+    return render(request, 'index.html' , {'Tessiu': tessiu, 'euclidea':euclidea(tessiu) , 'umbral':umbral})
    
 
